@@ -30,17 +30,16 @@ public class CityController {
 
     @GetMapping
     @ApiOperation(value = "Find All City with pageable")
-    public Page<City> getAllStatePage(Pageable pageable, @RequestParam(value = "name",required = false)  String name) throws Exception {
-        Page<City> clients = service.getAllPaginated(pageable, name);
-        return clients;
+    public Page<City> getAllCityPage(Pageable pageable, @RequestParam(value = "name",required = false)  String name) throws Exception {
+        return service.getAllPaginated(pageable, name);
     }
 
     @PostMapping()
     @ApiOperation("new City ")
-    public CityDTO create(@ApiParam(value = "State", required = true)
+    public CityDTO create(@ApiParam(value = "City", required = true)
                            @RequestBody @Valid final CityDTO dto) throws Exception {
         final City city = CityMapper.convertToEntity(dto);
-        return CityMapper.convertToDTO(service.add(city));
+        return CityMapper.convertToDTO(service.addOrUpdate(city));
     }
 
     @PutMapping("/{id}")
@@ -48,7 +47,7 @@ public class CityController {
     public CityDTO update(@ApiParam(value = "Client", required = true)
                            @RequestBody @Valid final CityDTO dto) throws Exception {
         final City city = CityMapper.convertToEntity(dto);
-        return CityMapper.convertToDTO(service.update(city));
+        return CityMapper.convertToDTO(service.addOrUpdate(city));
     }
 
     @DeleteMapping("/{id}")

@@ -41,25 +41,8 @@ public class ClientServiceImpl extends BaseException implements ClientService {
     }
 
     @Override
-    public Client add(Client entity) throws Exception {
-        try {
-
-            Client addClient = saveOrUpdate(entity);
-            return addClient;
-        } catch (Exception e) {
-            throw new Exception(e.getMessage());
-        }
-    }
-
-    @Override
-    public Client update(Client entity) throws Exception {
-        try {
-            Client updateClient = saveOrUpdate(entity);
-            return updateClient;
-        } catch (Exception e) {
-            throw new Exception(e.getMessage());
-        }
-
+    public Client addOrUpdate(Client entity)  {
+        return this.repository.save(entity);
     }
 
     @Override
@@ -77,15 +60,6 @@ public class ClientServiceImpl extends BaseException implements ClientService {
         try {
             repository.deleteById(id);
         } catch (Exception e) {
-            throw new Exception(e.getMessage());
-        }
-    }
-
-    @Transactional
-    public Client saveOrUpdate(Client entity) throws Exception {
-        try {
-            return repository.save(entity);
-        } catch (ConstraintViolationException e) {
             throw new Exception(e.getMessage());
         }
     }

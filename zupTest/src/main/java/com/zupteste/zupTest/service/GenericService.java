@@ -7,8 +7,6 @@ import java.util.List;
 
 public interface GenericService<T,I> {
 
-    T saveOrUpdate(T entity) throws Exception;
-
     List<T> getAll();
 
     Page<T> getAllPaginated(Pageable pageable) throws Exception;
@@ -17,9 +15,7 @@ public interface GenericService<T,I> {
 
     T get(I id);
 
-    T add(T entity) throws Exception;
-
-    T update(T entity) throws Exception;
+    T addOrUpdate(T entity);
 
     void remove(T entity) throws Exception;
 

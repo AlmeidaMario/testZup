@@ -20,21 +20,12 @@ public class CityServiceImpl extends BaseException implements CityService {
     CityRepository repository;
 
     @Override
-    public City saveOrUpdate(City entity) throws Exception {
-        try {
-            return repository.save(entity);
-        } catch (ConstraintViolationException e) {
-            throw new Exception(e.getMessage());
-        }
-    }
-
-    @Override
     public Page<City> getAllPaginated(Pageable pageable, String value) throws Exception {
         try {
             if (Objects.isNull(value)) {
                 return repository.findAll(pageable);
             } else {
-                return repository.findByNameContains(pageable, value);
+                return repository.findByName(pageable, value);
             }
         } catch (Exception e) {
             throw new Exception(e.getMessage());
@@ -49,23 +40,8 @@ public class CityServiceImpl extends BaseException implements CityService {
     }
 
     @Override
-    public City add(City entity) throws Exception {
-        try {
-            City addCity = saveOrUpdate(entity);
-            return addCity;
-        } catch (Exception e) {
-            throw new Exception(e.getMessage());
-        }
-    }
-
-    @Override
-    public City update(City entity) throws Exception {
-        try {
-            City updateCity = saveOrUpdate(entity);
-            return updateCity;
-        } catch (Exception e) {
-            throw new Exception(e.getMessage());
-        }
+    public City addOrUpdate(City entity) {
+        return this.repository.save(entity);
     }
 
     @Override

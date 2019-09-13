@@ -37,17 +37,17 @@ public class ClientController {
     @PostMapping()
     @ApiOperation("new Client ")
     public ClientDTO create(@ApiParam(value = "Client", required = true)
-                            @RequestBody @Valid final ClientDTO dto) throws Exception {
+                            @RequestBody @Valid final ClientDTO dto) {
         final Client client = ClientMapper.convertToEntity(dto);
-        return ClientMapper.convertToDTO(service.add(client));
+        return ClientMapper.convertToDTO(service.addOrUpdate(client));
     }
 
     @PutMapping("/{id}")
     @ApiOperation("update Client")
     public ClientDTO update(@ApiParam(value = "Client", required = true)
-                            @RequestBody @Valid final ClientDTO dto) throws Exception {
+                            @RequestBody @Valid final ClientDTO dto){
         final Client client = ClientMapper.convertToEntity(dto);
-        return ClientMapper.convertToDTO(service.update(client));
+        return ClientMapper.convertToDTO(service.addOrUpdate(client));
     }
 
     @DeleteMapping("/{id}")

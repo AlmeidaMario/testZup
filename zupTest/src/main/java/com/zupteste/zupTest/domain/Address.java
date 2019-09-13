@@ -18,7 +18,7 @@ public class Address {
     private Long id;
 
     @JoinColumn(name = "cd_id_client")
-    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    @ManyToOne(optional = false, fetch = FetchType.EAGER)
     private Client client;
 
     @Column(name = "nr_zip_code", nullable = false)
@@ -34,7 +34,7 @@ public class Address {
     private String district;
 
     @JoinColumn(name = "cd_id_city")
-    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    @ManyToOne(optional = false, fetch = FetchType.EAGER)
     private City city;
 
     public Address(Long id){

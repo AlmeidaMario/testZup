@@ -30,11 +30,10 @@ public class AddressController {
 
     @GetMapping
     @ApiOperation(value = "Find All Address with pageable")
-    public Page<Address> getAllStatePage(Pageable pageable,
+    public Page<Address> getAllAddressPage(Pageable pageable,
                                          @RequestParam(value = "cityName",required = false)  String cityName,
                                          @RequestParam(value = "district",required = false)  String district) throws Exception {
-        Page<Address> addresses = service.getAllPaginatedAdress(pageable, cityName, district);
-        return addresses;
+        return service.getAllPaginatedAdress(pageable, cityName, district);
     }
 
     @PostMapping()
@@ -42,7 +41,7 @@ public class AddressController {
     public AddressDTO create(@ApiParam(value = "State", required = true)
                           @RequestBody @Valid final AddressDTO dto) throws Exception {
         final Address address = AddressMapper.convertToEntity(dto);
-        return AddressMapper.convertToDTO(service.add(address));
+        return AddressMapper.convertToDTO(service.addOrUpdate(address));
     }
 
     @PutMapping("/{id}")
@@ -50,7 +49,7 @@ public class AddressController {
     public AddressDTO update(@ApiParam(value = "Client", required = true)
                           @RequestBody @Valid final AddressDTO dto) throws Exception {
         final Address address = AddressMapper.convertToEntity(dto);
-        return AddressMapper.convertToDTO(service.update(address));
+        return AddressMapper.convertToDTO(service.addOrUpdate(address));
     }
 
     @DeleteMapping("/{id}")

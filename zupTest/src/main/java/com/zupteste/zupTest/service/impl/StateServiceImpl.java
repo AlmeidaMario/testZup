@@ -20,21 +20,12 @@ public class StateServiceImpl extends BaseException implements StateService {
     StateRepository repository;
 
     @Override
-    public State saveOrUpdate(State entity) throws Exception {
-        try {
-            return repository.save(entity);
-        } catch (ConstraintViolationException e) {
-            throw new Exception(e.getMessage());
-        }
-    }
-
-    @Override
     public Page<State> getAllPaginated(Pageable pageable, String value) throws Exception {
         try {
             if (Objects.isNull(value)) {
                 return repository.findAll(pageable);
             } else {
-                return repository.findByNameContains(pageable, value.toUpperCase());
+                return repository.findByName(pageable, value);
             }
         } catch (Exception e) {
             throw new Exception(e.getMessage());
@@ -49,24 +40,8 @@ public class StateServiceImpl extends BaseException implements StateService {
     }
 
     @Override
-    public State add(State entity) throws Exception {
-        try {
-
-            State addState = saveOrUpdate(entity);
-            return addState;
-        } catch (Exception e) {
-            throw new Exception(e.getMessage());
-        }
-    }
-
-    @Override
-    public State update(State entity) throws Exception {
-        try {
-            State updateState = saveOrUpdate(entity);
-            return updateState;
-        } catch (Exception e) {
-            throw new Exception(e.getMessage());
-        }
+    public State addOrUpdate(State entity) {
+        return this.repository.save(entity);
     }
 
     @Override

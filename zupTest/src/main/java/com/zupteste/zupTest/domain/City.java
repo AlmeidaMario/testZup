@@ -19,7 +19,7 @@ public class City {
     private Long id;
 
     @JoinColumn(name = "cd_id_state")
-    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    @ManyToOne(optional = false, fetch = FetchType.EAGER)
     private State state;
 
     @Column(name = "tx_name", nullable = false)

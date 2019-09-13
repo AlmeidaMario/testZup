@@ -40,7 +40,7 @@ public class StateController {
     public StateDTO create(@ApiParam(value = "State", required = true)
                             @RequestBody @Valid final StateDTO dto) throws Exception {
         final State state = StateMapper.convertToEntity(dto);
-        return StateMapper.convertToDTO(service.add(state));
+        return StateMapper.convertToDTO(service.addOrUpdate(state));
     }
 
     @PutMapping("/{id}")
@@ -48,7 +48,7 @@ public class StateController {
     public StateDTO update(@ApiParam(value = "Client", required = true)
                             @RequestBody @Valid final StateDTO dto) throws Exception {
         final State state = StateMapper.convertToEntity(dto);
-        return StateMapper.convertToDTO(service.update(state));
+        return StateMapper.convertToDTO(service.addOrUpdate(state));
     }
 
     @DeleteMapping("/{id}")

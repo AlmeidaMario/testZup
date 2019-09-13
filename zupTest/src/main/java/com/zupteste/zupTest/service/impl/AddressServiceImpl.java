@@ -22,15 +22,6 @@ public class AddressServiceImpl extends BaseException implements AddressService 
     AddressRepository repository;
 
     @Override
-    public Address saveOrUpdate(Address entity) throws Exception {
-        try {
-            return repository.save(entity);
-        } catch (ConstraintViolationException e) {
-            throw new Exception(e.getMessage());
-        }
-    }
-
-    @Override
     public Page<Address> getAllPaginated(Pageable pageable) throws Exception {
         try {
             return repository.findAll(pageable);
@@ -66,23 +57,8 @@ public class AddressServiceImpl extends BaseException implements AddressService 
     }
 
     @Override
-    public Address add(Address entity) throws Exception {
-        try {
-            Address addAddress = saveOrUpdate(entity);
-            return addAddress;
-        } catch (Exception e) {
-            throw new Exception(e.getMessage());
-        }
-    }
-
-    @Override
-    public Address update(Address entity) throws Exception {
-        try {
-            Address updateAddress = saveOrUpdate(entity);
-            return updateAddress;
-        } catch (Exception e) {
-            throw new Exception(e.getMessage());
-        }
+    public Address addOrUpdate(Address entity){
+        return this.repository.save(entity);
     }
 
     @Override
