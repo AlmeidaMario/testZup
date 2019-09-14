@@ -20,15 +20,11 @@ public class ClientServiceImpl extends BaseException implements ClientService {
     ClientRepository repository;
 
     @Override
-    public Page<Client> getAllPaginated(Pageable pageable, String value) throws Exception {
-        try {
-            if (Objects.isNull(value)) {
-                return repository.findAll(pageable);
-            } else {
-                return repository.findByNameContains(pageable, value);
-            }
-        } catch (Exception e) {
-            throw new Exception(e.getMessage());
+    public Page<Client> getAllPaginated(Pageable pageable, String value) {
+        if (Objects.isNull(value)) {
+            return repository.findAll(pageable);
+        } else {
+            return repository.findByNameContains(pageable, value);
         }
     }
 
@@ -46,22 +42,13 @@ public class ClientServiceImpl extends BaseException implements ClientService {
     }
 
     @Override
-    public void remove(Client entity) throws Exception {
-        try {
-            repository.delete(entity);
-        } catch (Exception e) {
-            throw new Exception(e.getMessage());
-        }
+    public void remove(Client entity) {
+        repository.delete(entity);
     }
 
     @Override
-    public void removeById(Long id) throws Exception {
-
-        try {
-            repository.deleteById(id);
-        } catch (Exception e) {
-            throw new Exception(e.getMessage());
-        }
+    public void removeById(Long id) {
+        repository.deleteById(id);
     }
 
     @Override
@@ -70,12 +57,12 @@ public class ClientServiceImpl extends BaseException implements ClientService {
     }
 
     @Override
-    public Page<Client> getAllPaginated(Pageable pageable) throws Exception {
+    public Page<Client> getAllPaginated(Pageable pageable){
         return null;
     }
 
     @Override
-    public List<Client> findByName(String value) throws Exception {
+    public List<Client> findByName(String value){
         return null;
     }
 

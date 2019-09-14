@@ -22,30 +22,21 @@ public class AddressServiceImpl extends BaseException implements AddressService 
     AddressRepository repository;
 
     @Override
-    public Page<Address> getAllPaginated(Pageable pageable) throws Exception {
-        try {
-            return repository.findAll(pageable);
-        } catch (ConstraintViolationException e) {
-            throw new Exception(e.getMessage());
-        }
+    public Page<Address> getAllPaginated(Pageable pageable) {
+        return repository.findAll(pageable);
     }
 
     @Override
-    public Page<Address> getAllPaginatedAdress(Pageable pageable, String cityName, String district) throws Exception {
-        try {
-
-            /*Nesse caso será dado a opção para pesquisa tanto por Cidade e Bairro, quanto por cada um....*/
-            if (Objects.nonNull(cityName) && Objects.nonNull(district)) {
-                return repository.findAllByCity_NameAndDistrict(pageable, cityName, district);
-            }else if (Objects.nonNull(cityName)){
-                return repository.findAllByCity_Name(pageable, cityName);
-            }else if (Objects.nonNull(district)){
-                return repository.findAllByDistrict(pageable, district);
-            } else {
-                return repository.findAll(pageable);
-            }
-        } catch (Exception e) {
-            throw new Exception(e.getMessage());
+    public Page<Address> getAllPaginatedAdress(Pageable pageable, String cityName, String district) {
+        /*Nesse caso será dado a opção para pesquisa tanto por Cidade e Bairro, quanto por cada um....*/
+        if (Objects.nonNull(cityName) && Objects.nonNull(district)) {
+            return repository.findAllByCity_NameAndDistrict(pageable, cityName, district);
+        } else if (Objects.nonNull(cityName)) {
+            return repository.findAllByCity_Name(pageable, cityName);
+        } else if (Objects.nonNull(district)) {
+            return repository.findAllByDistrictContains(pageable, district);
+        } else {
+            return repository.findAll(pageable);
         }
     }
 
@@ -62,21 +53,13 @@ public class AddressServiceImpl extends BaseException implements AddressService 
     }
 
     @Override
-    public void remove(Address entity) throws Exception {
-        try {
-            repository.delete(entity);
-        } catch (Exception e) {
-            throw new Exception(e.getMessage());
-        }
+    public void remove(Address entity) {
+        repository.delete(entity);
     }
 
     @Override
-    public void removeById(Long id) throws Exception {
-        try {
-            repository.deleteById(id);
-        } catch (Exception e) {
-            throw new Exception(e.getMessage());
-        }
+    public void removeById(Long id) {
+        repository.deleteById(id);
     }
 
     @Override
@@ -85,7 +68,7 @@ public class AddressServiceImpl extends BaseException implements AddressService 
     }
 
     @Override
-    public Page<Address> getAllPaginated(Pageable pageable, String value) throws Exception {
+    public Page<Address> getAllPaginated(Pageable pageable, String value){
         return null;
     }
 

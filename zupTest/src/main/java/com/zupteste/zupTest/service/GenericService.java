@@ -9,16 +9,16 @@ public interface GenericService<T,I> {
 
     List<T> getAll();
 
-    Page<T> getAllPaginated(Pageable pageable) throws Exception;
+    Page<T> getAllPaginated(Pageable pageable);
 
-    Page<T> getAllPaginated(Pageable pageable, String value) throws Exception;
+    Page<T> getAllPaginated(Pageable pageable, String value);
 
     T get(I id);
 
     T addOrUpdate(T entity);
 
-    void remove(T entity) throws Exception;
+    void remove(T entity);
 
-    void removeById(I id) throws Exception;
+    void removeById(I id);
 
 }

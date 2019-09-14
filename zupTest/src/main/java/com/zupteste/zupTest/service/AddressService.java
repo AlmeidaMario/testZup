@@ -7,6 +7,6 @@ import org.springframework.data.domain.Pageable;
 
 public interface AddressService extends GenericService<Address,Long> {
 
-    Page<Address> getAllPaginatedAdress(Pageable pageable, String cityName, String district) throws Exception;
+    Page<Address> getAllPaginatedAdress(Pageable pageable, String cityName, String district);
 
 }

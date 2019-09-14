@@ -32,4 +32,8 @@ public class Client {
         this.id = id;
     }
 
+    public Client(String name){
+        this.name = name;
+    }
+
 }
