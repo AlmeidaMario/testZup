@@ -3,17 +3,20 @@ package com.zupteste.zupTest.mapper;
 
 import com.zupteste.zupTest.domain.Client;
 import com.zupteste.zupTest.dto.ClientDTO;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
+import org.junit.runner.RunWith;
+import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.Arrays;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class ClientMapperTest {
+@RunWith(SpringRunner.class)
+class ClientMapperTest {
 
     @Test
-    public void convertDtoToEntity() {
+    void convertDtoToEntity() {
         ClientDTO dto = new ClientDTO((long) 1,"01096709228","Mario Ferreira de Almeida Neto");
         Client entity = ClientMapper.convertToEntity(dto);
         checkProperties(dto, entity);
@@ -21,7 +24,7 @@ public class ClientMapperTest {
 
     //
     @Test
-    public void convertEntityToDto() {
+    void convertEntityToDto() {
         Client entity = new Client((long) 1, "01096709228", "Mario Ferreira de Almeida Neto");
         ClientDTO dto = ClientMapper.convertToDTO(entity);
         checkProperties(dto, entity);
@@ -29,7 +32,7 @@ public class ClientMapperTest {
 
 
     @Test
-    public void convertListToEntityList() {
+    void convertListToEntityList() {
         ClientDTO dto1 = new ClientDTO((long) 1,"01096709228","Mario Ferreira de Almeida Neto");
         ClientDTO dto2 = new ClientDTO((long) 2,"01619415240","André Preto");
         List<ClientDTO> listDTOS = Arrays.asList(dto1, dto2);
@@ -42,7 +45,7 @@ public class ClientMapperTest {
     }
 
     @Test
-    public void convertListToDtoList() {
+    void convertListToDtoList() {
         Client entity1 = new Client((long) 1,"01096709228","Mario Ferreira de Almeida Neto");
         Client entity2 = new Client((long) 1,"01096709228","Mario Ferreira de Almeida Neto");
         List<Client> entities = Arrays.asList(entity1, entity2);
