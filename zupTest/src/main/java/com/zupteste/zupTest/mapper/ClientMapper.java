@@ -18,6 +18,17 @@ public class ClientMapper {
         return clientDTOS;
     }
 
+    public static List<Client> convertToListEntity(List<ClientDTO> clientDTOS){
+
+        List<Client> clients = new ArrayList<>();
+
+        clientDTOS.forEach(clientDTO -> {
+            clients.add(convertToEntity(clientDTO));
+        });
+
+        return clients;
+    }
+
     public static ClientDTO convertToDTO(Client client){
 
         ClientDTO dto = new ClientDTO();

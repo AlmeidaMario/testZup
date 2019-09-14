@@ -21,4 +21,10 @@ public class ClientDTO {
     private String name;
 
     private Date dataNascimento;
+
+    public ClientDTO(Long id, String cpf, String name){
+        this.id = id;
+        this.cpf = cpf;
+        this.name = name;
+    }
 }

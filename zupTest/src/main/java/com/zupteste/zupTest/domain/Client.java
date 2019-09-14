@@ -36,4 +36,9 @@ public class Client {
         this.name = name;
     }
 
+    public Client(Long id, String cpf, String name){
+        this.id = id;
+        this.cpf = cpf;
+        this.name = name;
+    }
 }
