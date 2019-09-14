@@ -24,7 +24,7 @@ public class AddressController {
 
     @GetMapping(value = "/{id}")
     @ApiOperation(value = "Find Address by id")
-    public AddressDTO findById(@ApiParam(value = "id", required = true) @PathVariable Long id) throws Exception {
+    public AddressDTO findById(@ApiParam(value = "id", required = true) @PathVariable Long id){
         return AddressMapper.convertToDTO(service.get(id));
     }
 
@@ -32,14 +32,14 @@ public class AddressController {
     @ApiOperation(value = "Find All Address with pageable")
     public Page<Address> getAllAddressPage(Pageable pageable,
                                          @RequestParam(value = "cityName",required = false)  String cityName,
-                                         @RequestParam(value = "district",required = false)  String district) throws Exception {
+                                         @RequestParam(value = "district",required = false)  String district){
         return service.getAllPaginatedAdress(pageable, cityName, district);
     }
 
     @PostMapping()
     @ApiOperation("new Address ")
     public AddressDTO create(@ApiParam(value = "State", required = true)
-                          @RequestBody @Valid final AddressDTO dto) throws Exception {
+                                 @RequestBody @Valid final AddressDTO dto){
         final Address address = AddressMapper.convertToEntity(dto);
         return AddressMapper.convertToDTO(service.addOrUpdate(address));
     }
@@ -47,14 +47,14 @@ public class AddressController {
     @PutMapping("/{id}")
     @ApiOperation("update Address")
     public AddressDTO update(@ApiParam(value = "Client", required = true)
-                          @RequestBody @Valid final AddressDTO dto) throws Exception {
+                          @RequestBody @Valid final AddressDTO dto){
         final Address address = AddressMapper.convertToEntity(dto);
         return AddressMapper.convertToDTO(service.addOrUpdate(address));
     }
 
     @DeleteMapping("/{id}")
     @ApiOperation("delete Address")
-    public void delete(@ApiParam(value = "id", required = true) @PathVariable final Long id) throws Exception {
+    public void delete(@ApiParam(value = "id", required = true) @PathVariable final Long id){
         service.removeById(id);
     }
 }

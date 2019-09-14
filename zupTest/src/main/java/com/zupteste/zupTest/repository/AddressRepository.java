@@ -11,7 +11,7 @@ public interface AddressRepository extends JpaRepository<Address, Long> {
 
     Page<Address> findAllByCity_NameAndDistrict(Pageable pageable, String cityName, String district);
     Page<Address> findAllByCity_Name(Pageable pageable, String cityName);
-    Page<Address> findAllByDistrict(Pageable pageable, String district);
+    Page<Address> findAllByDistrictContains(Pageable pageable, String district);
 
 
 }
