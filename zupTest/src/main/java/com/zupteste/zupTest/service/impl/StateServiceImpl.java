@@ -20,15 +20,11 @@ public class StateServiceImpl extends BaseException implements StateService {
     StateRepository repository;
 
     @Override
-    public Page<State> getAllPaginated(Pageable pageable, String value) throws Exception {
-        try {
-            if (Objects.isNull(value)) {
-                return repository.findAll(pageable);
-            } else {
-                return repository.findByName(pageable, value);
-            }
-        } catch (Exception e) {
-            throw new Exception(e.getMessage());
+    public Page<State> getAllPaginated(Pageable pageable, String value) {
+        if (Objects.isNull(value)) {
+            return repository.findAll(pageable);
+        } else {
+            return repository.findByNameContains(pageable, value);
         }
     }
 
@@ -45,21 +41,13 @@ public class StateServiceImpl extends BaseException implements StateService {
     }
 
     @Override
-    public void remove(State entity) throws Exception {
-        try {
-            repository.delete(entity);
-        } catch (Exception e) {
-            throw new Exception(e.getMessage());
-        }
+    public void remove(State entity) {
+        repository.delete(entity);
     }
 
     @Override
-    public void removeById(Long id) throws Exception {
-        try {
-            repository.deleteById(id);
-        } catch (Exception e) {
-            throw new Exception(e.getMessage());
-        }
+    public void removeById(Long id) {
+        repository.deleteById(id);
     }
 
     @Override
@@ -68,7 +56,7 @@ public class StateServiceImpl extends BaseException implements StateService {
     }
 
     @Override
-    public Page<State> getAllPaginated(Pageable pageable) throws Exception {
+    public Page<State> getAllPaginated(Pageable pageable){
         return null;
     }
 

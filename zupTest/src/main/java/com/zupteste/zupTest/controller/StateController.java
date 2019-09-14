@@ -24,13 +24,13 @@ public class StateController {
 
     @GetMapping(value = "/{id}")
     @ApiOperation(value = "Find State by id")
-    public StateDTO findById(@ApiParam(value = "id", required = true) @PathVariable Long id) throws Exception {
+    public StateDTO findById(@ApiParam(value = "id", required = true) @PathVariable Long id){
         return StateMapper.convertToDTO(service.get(id));
     }
 
     @GetMapping
     @ApiOperation(value = "Find All State with pageable")
-    public Page<State> getAllStatePage(Pageable pageable, @RequestParam(value = "name",required = false)  String name) throws Exception {
+    public Page<State> getAllStatePage(Pageable pageable, @RequestParam(value = "name",required = false)  String name){
         Page<State> states = service.getAllPaginated(pageable, name);
         return states;
     }
@@ -38,7 +38,7 @@ public class StateController {
     @PostMapping()
     @ApiOperation("new State ")
     public StateDTO create(@ApiParam(value = "State", required = true)
-                            @RequestBody @Valid final StateDTO dto) throws Exception {
+                            @RequestBody @Valid final StateDTO dto){
         final State state = StateMapper.convertToEntity(dto);
         return StateMapper.convertToDTO(service.addOrUpdate(state));
     }
@@ -46,14 +46,14 @@ public class StateController {
     @PutMapping("/{id}")
     @ApiOperation("update State")
     public StateDTO update(@ApiParam(value = "Client", required = true)
-                            @RequestBody @Valid final StateDTO dto) throws Exception {
+                            @RequestBody @Valid final StateDTO dto){
         final State state = StateMapper.convertToEntity(dto);
         return StateMapper.convertToDTO(service.addOrUpdate(state));
     }
 
     @DeleteMapping("/{id}")
     @ApiOperation("delete State")
-    public void delete(@ApiParam(value = "id", required = true) @PathVariable final Long id) throws Exception {
+    public void delete(@ApiParam(value = "id", required = true) @PathVariable final Long id){
         service.removeById(id);
     }
 }

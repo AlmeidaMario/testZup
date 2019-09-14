@@ -24,20 +24,20 @@ public class CityController {
 
     @GetMapping(value = "/{id}")
     @ApiOperation(value = "Find City by id")
-    public CityDTO findById(@ApiParam(value = "id", required = true) @PathVariable Long id) throws Exception {
+    public CityDTO findById(@ApiParam(value = "id", required = true) @PathVariable Long id){
         return CityMapper.convertToDTO(service.get(id));
     }
 
     @GetMapping
     @ApiOperation(value = "Find All City with pageable")
-    public Page<City> getAllCityPage(Pageable pageable, @RequestParam(value = "name",required = false)  String name) throws Exception {
+    public Page<City> getAllCityPage(Pageable pageable, @RequestParam(value = "name",required = false)  String name){
         return service.getAllPaginated(pageable, name);
     }
 
     @PostMapping()
     @ApiOperation("new City ")
     public CityDTO create(@ApiParam(value = "City", required = true)
-                           @RequestBody @Valid final CityDTO dto) throws Exception {
+                           @RequestBody @Valid final CityDTO dto){
         final City city = CityMapper.convertToEntity(dto);
         return CityMapper.convertToDTO(service.addOrUpdate(city));
     }
@@ -45,14 +45,14 @@ public class CityController {
     @PutMapping("/{id}")
     @ApiOperation("update City")
     public CityDTO update(@ApiParam(value = "Client", required = true)
-                           @RequestBody @Valid final CityDTO dto) throws Exception {
+                           @RequestBody @Valid final CityDTO dto){
         final City city = CityMapper.convertToEntity(dto);
         return CityMapper.convertToDTO(service.addOrUpdate(city));
     }
 
     @DeleteMapping("/{id}")
     @ApiOperation("delete City")
-    public void delete(@ApiParam(value = "id", required = true) @PathVariable final Long id) throws Exception {
+    public void delete(@ApiParam(value = "id", required = true) @PathVariable final Long id){
         service.removeById(id);
     }
 

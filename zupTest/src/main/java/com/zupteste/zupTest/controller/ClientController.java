@@ -23,13 +23,14 @@ public class ClientController {
 
     @GetMapping(value = "/{id}")
     @ApiOperation(value = "Find Client by id")
-    public ClientDTO findById(@ApiParam(value = "id", required = true) @PathVariable Long id) throws Exception {
+    public ClientDTO findById(@ApiParam(value = "id", required = true) @PathVariable Long id){
         return ClientMapper.convertToDTO(service.get(id));
     }
 
     @GetMapping
     @ApiOperation(value = "Find All Client with pageable")
-    public Page<Client> getAllClientPage(Pageable pageable, @RequestParam(value = "name",required = false)  String name) throws Exception {
+    public Page<Client> getAllClientPage(Pageable pageable,
+                                         @RequestParam(value = "name",required = false)  String name){
         Page<Client> clients = service.getAllPaginated(pageable, name);
         return clients;
     }
@@ -52,7 +53,7 @@ public class ClientController {
 
     @DeleteMapping("/{id}")
     @ApiOperation("delete Client")
-    public void delete(@ApiParam(value = "id", required = true) @PathVariable final Long id) throws Exception {
+    public void delete(@ApiParam(value = "id", required = true) @PathVariable final Long id){
         service.removeById(id);
     }
 }
