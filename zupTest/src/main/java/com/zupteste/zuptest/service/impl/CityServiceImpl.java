@@ -13,49 +13,49 @@ import java.util.Objects;
 import java.util.Optional;
 
 @Service
-public class CityServiceImpl extends BaseException implements CityService {
+public class CityServiceImpl extends BaseException implements CityService {//NOPMD
 
     @Autowired
-    CityRepository repository;
+    private CityRepository repository;//NOPMD
 
     @Override
-    public Page<City> getAllPaginated(Pageable pageable, String value) {
+    public Page<City> getAllPaginated(final Pageable pageable, final String value) {
         if (Objects.isNull(value)) {
-            return repository.findAll(pageable);
+            return repository.findAll(pageable);//NOPMD
         } else {
             return repository.findByNameContains(pageable, value);
         }
     }
 
     @Override
-    public City get(Long id) {
-        Optional<City> city = repository.findById(id);
+    public City get(Long id) {//NOPMD
+        final Optional<City> city = repository.findById(id);
         super.verityNotFoundException(city);
-        return city.get();
+        return city.get();//NOPMD
     }
 
     @Override
-    public City getByName(String name) {
+    public City getByName(final String name) {
         return repository.findByName(name);
     }
 
     @Override
-    public City addOrUpdate(City entity) {
+    public City addOrUpdate(final City entity) {
         return this.repository.save(entity);
     }
 
     @Override
-    public void remove(City entity) {
+    public void remove(final City entity) {
         repository.delete(entity);
     }
 
     @Override
-    public void removeById(Long id) {
+    public void removeById(Long id) {//NOPMD
         repository.deleteById(id);
     }
 
     @Override
-    public Page<City> getAllPaginated(Pageable pageable){
+    public Page<City> getAllPaginated(final Pageable pageable){
         return null;
     }
 

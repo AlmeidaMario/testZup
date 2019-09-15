@@ -12,40 +12,40 @@ import java.util.Objects;
 import java.util.Optional;
 
 @Service
-public class ClientServiceImpl extends BaseException implements ClientService {
+public class ClientServiceImpl extends BaseException implements ClientService {//NOPMD
 
     @Autowired
-    ClientRepository repository;
+    private ClientRepository repository;//NOPMD
 
     @Override
-    public Page<Client> getAllPaginated(Pageable pageable, String value) {
+    public Page<Client> getAllPaginated(final Pageable pageable, final String value) {
         if (Objects.isNull(value)) {
-            return repository.findAll(pageable);
+            return repository.findAll(pageable);//NOPMD
         } else {
             return repository.findByNameContains(pageable, value);
         }
     }
 
     @Override
-    public Client get(Long id) {
+    public Client get(Long id) {//NOPMD
 
-        Optional<Client> client = repository.findById(id);
+        final Optional<Client> client = repository.findById(id);
         super.verityNotFoundException(client);
-        return client.get();
+        return client.get();//NOPMD
     }
 
     @Override
-    public Client addOrUpdate(Client entity)  {
+    public Client addOrUpdate(final Client entity)  {
         return this.repository.save(entity);
     }
 
     @Override
-    public void remove(Client entity) {
+    public void remove(final Client entity) {
         repository.delete(entity);
     }
 
     @Override
-    public void removeById(Long id) {
+    public void removeById(Long id) {//NOPMD
         repository.deleteById(id);
     }
 
@@ -55,17 +55,17 @@ public class ClientServiceImpl extends BaseException implements ClientService {
     }
 
     @Override
-    public Page<Client> getAllPaginated(Pageable pageable){
+    public Page<Client> getAllPaginated(final Pageable pageable){
         return null;
     }
 
     @Override
-    public List<Client> findByName(String value){
+    public List<Client> findByName(final String value){
         return null;
     }
 
     @Override
-    public Client getByCPF(String cpf) {
+    public Client getByCPF(final String cpf) {
         return repository.findByCpf(cpf);
     }
 

@@ -9,11 +9,11 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @RestControllerAdvice
-public class WebRestControllerAdvice {
+public class WebRestControllerAdvice {//NOPMD//NOPMD
 
     @ResponseStatus(code = HttpStatus.BAD_REQUEST)
     @ExceptionHandler(MethodArgumentNotValidException.class)
-    public List<ErrorForm> handler(final MethodArgumentNotValidException exceptions){
-        return exceptions.getBindingResult().getFieldErrors().stream().map(ErrorForm::new).collect(Collectors.toList());
+    public List<ErrorForm> handler(final MethodArgumentNotValidException exceptions){//NOPMD
+        return exceptions.getBindingResult().getFieldErrors().stream().map(ErrorForm::new).collect(Collectors.toList());//NOPMD
     }
 }

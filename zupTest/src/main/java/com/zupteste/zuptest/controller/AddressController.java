@@ -14,31 +14,32 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
-@Api(value = "Address Controller")
+@Api(value = "Address Controller")//NOPMD
 @RestController
-@RequestMapping(value = "/address")
-public class AddressController {
+@RequestMapping(value = "/address")//NOPMD
+public class AddressController {//NOPMD
 
     @Autowired
-    AddressService service;
+    private AddressService service;//NOPMD
 
-    @GetMapping(value = "/{id}")
-    @ApiOperation(value = "Find Address by id")
-    public AddressDTO findById(final @ApiParam(value = "id", required = true) @PathVariable Long id){
+
+    @GetMapping(value = "/{id}")//NOPMD
+    @ApiOperation(value = "Find Address by id")//NOPMD
+    public AddressDTO findById(final @ApiParam(value = "id", required = true) @PathVariable Long id){//NOPMD
         return AddressMapper.convertToDTO(service.get(id));
     }
 
     @GetMapping
-    @ApiOperation(value = "Find All Address with pageable")
-    public Page<Address> getAllAddressPage(final Pageable pageable,
+    @ApiOperation(value = "Find All Address with pageable")//NOPMD
+    public Page<Address> getAllAddressPage(final Pageable pageable,//NOPMD
                                            final @RequestParam(value = "cityName",required = false)  String cityName,
                                            final @RequestParam(value = "district",required = false)  String district){
         return service.getAllPaginatedAdress(pageable, cityName, district);
     }
-
+    //NOPMD
     @PostMapping()
     @ApiOperation("new Address ")
-    public AddressDTO create(@ApiParam(value = "State", required = true)
+    public AddressDTO create(@ApiParam(value = "State", required = true)//NOPMD
                                  @RequestBody @Valid final AddressDTO dto){
         final Address address = AddressMapper.convertToEntity(dto);
         return AddressMapper.convertToDTO(service.addOrUpdate(address));
@@ -46,7 +47,7 @@ public class AddressController {
 
     @PutMapping("/{id}")
     @ApiOperation("update Address")
-    public AddressDTO update(@ApiParam(value = "Client", required = true)
+    public AddressDTO update(@ApiParam(value = "Client", required = true)//NOPMD
                           @RequestBody @Valid final AddressDTO dto){
         final Address address = AddressMapper.convertToEntity(dto);
         return AddressMapper.convertToDTO(service.addOrUpdate(address));
@@ -54,7 +55,7 @@ public class AddressController {
 
     @DeleteMapping("/{id}")
     @ApiOperation("delete Address")
-    public void delete(@ApiParam(value = "id", required = true) @PathVariable final Long id){
+    public void delete(@ApiParam(value = "id", required = true) @PathVariable final Long id){//NOPMD
         service.removeById(id);
     }
-}
+}//NOPMD

@@ -2,11 +2,11 @@ package com.zupteste.zuptest.config.handler;
 
 import org.springframework.validation.FieldError;
 
-public class ErrorForm {
-    public String field;
-    public String message;
+public class ErrorForm{//NOPMD
+    public String field;//NOPMD
+    public String message;//NOPMD
 
-    public ErrorForm(final FieldError fieldError){
+    public ErrorForm(final FieldError fieldError){//NOPMD
         this.field = fieldError.getField();
         this.message = fieldError.getDefaultMessage();
     }

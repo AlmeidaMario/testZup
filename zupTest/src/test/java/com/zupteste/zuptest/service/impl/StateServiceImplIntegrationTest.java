@@ -19,7 +19,7 @@ import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
 public class StateServiceImplIntegrationTest {
 
     @TestConfiguration
-    static class StateServiceImplTestContextConfiguration {
+    public static class StateServiceImplTestContextConfiguration {
 
         @Bean
         public StateService stateService() {
@@ -28,10 +28,9 @@ public class StateServiceImplIntegrationTest {
     }
 
     @Autowired
-    private StateService stateService;
-
+    StateService stateService;
     @MockBean
-    private StateRepository stateRepository;
+    StateRepository stateRepository;
 
     @Before
     public void setUp() {

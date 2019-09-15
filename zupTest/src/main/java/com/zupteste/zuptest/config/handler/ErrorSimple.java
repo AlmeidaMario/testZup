@@ -7,6 +7,6 @@ import lombok.Setter;
 @AllArgsConstructor
 @Getter
 @Setter
-public class ErrorSimple {
-    private String message;
+public class ErrorSimple {//NOPMD
+    private String message;//NOPMD
 }

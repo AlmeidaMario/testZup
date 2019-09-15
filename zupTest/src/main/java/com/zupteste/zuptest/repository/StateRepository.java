@@ -7,10 +7,10 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface StateRepository extends JpaRepository<State, Long> {
+public interface StateRepository extends JpaRepository<State, Long> {//NOPMD
 
-    Page<State> findByNameContains(Pageable pageable, String value);
+    Page<State> findByNameContains(Pageable pageable, String value);//NOPMD
 
-    State findByName(String name);
+    State findByName(String name);//NOPMD
 
 }

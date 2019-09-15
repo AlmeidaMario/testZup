@@ -1,0 +1,644 @@
+{
+	"info": {
+		"_postman_id": "74ecd5e8-9371-4969-92c8-bab92f3b099f",
+		"name": "TestZup_MárioAlmeida",
+		"description": "This collection is disponilized to use a API with crud of client, in hire test \nZUP",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "State",
+			"item": [
+				{
+					"name": "Find All States",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:9999/api/state?page=0&size=3&sort=id,DESC",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9999",
+							"path": [
+								"api",
+								"state"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "0"
+								},
+								{
+									"key": "size",
+									"value": "3"
+								},
+								{
+									"key": "sort",
+									"value": "id,DESC"
+								},
+								{
+									"key": "name",
+									"value": "São Paulo",
+									"disabled": true
+								}
+							]
+						},
+						"description": "Request to get ALL states"
+					},
+					"response": []
+				},
+				{
+					"name": "New State",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"id\": 0,\n  \"name\": \"São Paulo\",\n  \"uf\": \"SP\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:9999/api/state/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9999",
+							"path": [
+								"api",
+								"state",
+								""
+							]
+						},
+						"description": "Request to create a new State"
+					},
+					"response": []
+				},
+				{
+					"name": "Find State By id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:9999/api/state/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9999",
+							"path": [
+								"api",
+								"state",
+								"1"
+							]
+						},
+						"description": "Request to get State by id"
+					},
+					"response": []
+				},
+				{
+					"name": "Update State",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"id\": 1,\n  \"name\": \"São Paulo\",\n  \"uf\": \"SP\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:9999/api/state/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9999",
+							"path": [
+								"api",
+								"state",
+								"1"
+							]
+						},
+						"description": "Request to update a State"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete State",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:9999/api/state/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9999",
+							"path": [
+								"api",
+								"state",
+								"1"
+							]
+						},
+						"description": "request do delete state by id"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "City",
+			"item": [
+				{
+					"name": "New City",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"id\": 0,\n  \"name\": \"Campinas\",\n  \"state\": {\n    \"id\": 1,\n    \"name\": \"São Paulo\",\n    \"uf\": \"SP\"\n  }\n}"
+						},
+						"url": {
+							"raw": "http://localhost:9999/api/city/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9999",
+							"path": [
+								"api",
+								"city",
+								""
+							]
+						},
+						"description": "Request do add a new city"
+					},
+					"response": []
+				},
+				{
+					"name": "Find All Cities",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:9999/api/city?page=0&size=3&sort=id,DESC",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9999",
+							"path": [
+								"api",
+								"city"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "0"
+								},
+								{
+									"key": "size",
+									"value": "3"
+								},
+								{
+									"key": "sort",
+									"value": "id,DESC"
+								},
+								{
+									"key": "name",
+									"value": "Campinas",
+									"disabled": true
+								}
+							]
+						},
+						"description": "Request to get ALL cities"
+					},
+					"response": []
+				},
+				{
+					"name": "Find City By id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:9999/api/city/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9999",
+							"path": [
+								"api",
+								"city",
+								"1"
+							]
+						},
+						"description": "Request do get city by id"
+					},
+					"response": []
+				},
+				{
+					"name": "Update City",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"id\": 0,\n  \"name\": \"Campinas\",\n  \"state\": {\n    \"id\": 1,\n    \"name\": \"São Paulo\",\n    \"uf\": \"SP\"\n  }\n}"
+						},
+						"url": {
+							"raw": "http://localhost:9999/api/city/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9999",
+							"path": [
+								"api",
+								"city",
+								"1"
+							]
+						},
+						"description": "Request do update a city"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete City",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:9999/api/city/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9999",
+							"path": [
+								"api",
+								"city",
+								"1"
+							]
+						},
+						"description": "Request do delete a city"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Client",
+			"item": [
+				{
+					"name": "New Client",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"cpf\": \"01096709228\",\n  \"dataNascimento\": \"1994-04-02\",\n  \"id\": 0,\n  \"name\": \"Mário Ferreira de Almeida Neto\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:9999/api/client/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9999",
+							"path": [
+								"api",
+								"client",
+								""
+							]
+						},
+						"description": "Request do create a new Client"
+					},
+					"response": []
+				},
+				{
+					"name": "Find All Clients",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:9999/api/client?page=0&size=3&sort=id,DESC",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9999",
+							"path": [
+								"api",
+								"client"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "0"
+								},
+								{
+									"key": "size",
+									"value": "3"
+								},
+								{
+									"key": "sort",
+									"value": "id,DESC"
+								},
+								{
+									"key": "name",
+									"value": "Mário",
+									"disabled": true
+								}
+							]
+						},
+						"description": "Request to get all clients"
+					},
+					"response": []
+				},
+				{
+					"name": "Find Client by Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:9999/api/client/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9999",
+							"path": [
+								"api",
+								"client",
+								"1"
+							]
+						},
+						"description": "Request to get client by id"
+					},
+					"response": []
+				},
+				{
+					"name": "Update Client",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"cpf\": \"01096709228\",\n  \"dataNascimento\": \"1994-04-02\",\n  \"id\": 1,\n  \"name\": \"Mário Ferreira de Almeida Neto\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:9999/api/client/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9999",
+							"path": [
+								"api",
+								"client",
+								"1"
+							]
+						},
+						"description": "Request to update a client"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Client",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:9999/api/client/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9999",
+							"path": [
+								"api",
+								"client",
+								"1"
+							]
+						},
+						"description": "Request to delete a client"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Address",
+			"item": [
+				{
+					"name": "New Address",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"city\": {\n    \"id\": 1,\n    \"name\": \"Campinas\",\n    \"state\": {\n      \"id\": 1,\n      \"name\": \"São Paulo\",\n      \"uf\": \"AP\"\n    }\n  },\n  \"client\": {\n    \"cpf\": \"01096709228\",\n    \"dataNascimento\": \"1994-04-02\",\n    \"id\": 1,\n    \"name\": \"Mário Ferreira de Almeida Neto\"\n  },\n  \"district\": \"Jardim Santa Genebra\",\n  \"id\": 0,\n  \"number\": 214,\n  \"street\": \"Av. José Rocha Bomfim\",\n  \"zipcode\": 13080658\n}"
+						},
+						"url": {
+							"raw": "http://localhost:9999/api/address/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9999",
+							"path": [
+								"api",
+								"address",
+								""
+							]
+						},
+						"description": "Request to add a new Address\n"
+					},
+					"response": []
+				},
+				{
+					"name": "Find All Addresses",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:9999/api/address?page=0&size=3&sort=id,DESC&cityName=Campinas&district=Jardim Santa Genebra",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9999",
+							"path": [
+								"api",
+								"address"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "0"
+								},
+								{
+									"key": "size",
+									"value": "3"
+								},
+								{
+									"key": "sort",
+									"value": "id,DESC"
+								},
+								{
+									"key": "cityName",
+									"value": "Campinas"
+								},
+								{
+									"key": "district",
+									"value": "Jardim Santa Genebra"
+								}
+							]
+						},
+						"description": "Request do get all addresses"
+					},
+					"response": []
+				},
+				{
+					"name": "Find Address by id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:9999/api/address/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9999",
+							"path": [
+								"api",
+								"address",
+								"1"
+							]
+						},
+						"description": "Request do get Address by id"
+					},
+					"response": []
+				},
+				{
+					"name": "Update Address",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"city\": {\n    \"id\": 1,\n    \"name\": \"Campinas\",\n    \"state\": {\n      \"id\": 1,\n      \"name\": \"São Paulo\",\n      \"uf\": \"AP\"\n    }\n  },\n  \"client\": {\n    \"cpf\": \"01096709228\",\n    \"dataNascimento\": \"1994-04-02\",\n    \"id\": 1,\n    \"name\": \"Mário Ferreira de Almeida Neto\"\n  },\n  \"district\": \"Jardim Santa Genebra\",\n  \"id\": 0,\n  \"number\": 214,\n  \"street\": \"Av. José Rocha Bomfim\",\n  \"zipcode\": 13080658\n}"
+						},
+						"url": {
+							"raw": "http://localhost:9999/api/address/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9999",
+							"path": [
+								"api",
+								"address",
+								"1"
+							]
+						},
+						"description": "Request do update a address"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Address",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:9999/api/address/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9999",
+							"path": [
+								"api",
+								"address",
+								"1"
+							]
+						},
+						"description": "Request do delete a Address\n"
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

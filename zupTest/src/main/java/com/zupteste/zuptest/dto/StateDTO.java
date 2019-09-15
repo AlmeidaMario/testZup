@@ -8,14 +8,14 @@ import javax.validation.constraints.NotBlank;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class StateDTO {
+public class StateDTO {//NOPMD
 
-    private Long id;
+    private Long id;//NOPMD
 
     @NotBlank(message = "UF is Required")
-    private String uf;
+    private String uf;//NOPMD
 
     @NotBlank(message = "Name is Required")
-    private String name;
+    private String name;//NOPMD
 
 }

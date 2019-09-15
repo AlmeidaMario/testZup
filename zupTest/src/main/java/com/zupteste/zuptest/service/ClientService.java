@@ -4,9 +4,9 @@ import com.zupteste.zuptest.domain.Client;
 import java.util.List;
 
 
-public interface  ClientService extends GenericService<Client, Long> {
+public interface  ClientService extends GenericService<Client, Long> {//NOPMD
 
-     List<Client> findByName(String value);
+     List<Client> findByName(String value);//NOPMD
 
-     Client getByCPF(String cpf);
+     Client getByCPF(String cpf);//NOPMD
 }
