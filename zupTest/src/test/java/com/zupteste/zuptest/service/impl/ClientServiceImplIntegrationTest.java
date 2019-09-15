@@ -20,7 +20,6 @@ public class ClientServiceImplIntegrationTest {
 
     @TestConfiguration
     static class ClientServiceImplTestContextConfiguration {
-
         @Bean
         public ClientService clientService() {
             return new ClientServiceImpl();

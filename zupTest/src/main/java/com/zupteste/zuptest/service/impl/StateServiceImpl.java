@@ -13,44 +13,44 @@ import java.util.Objects;
 import java.util.Optional;
 
 @Service
-public class StateServiceImpl extends BaseException implements StateService {
+public class StateServiceImpl extends BaseException implements StateService {//NOPMD
 
     @Autowired
-    StateRepository repository;
+    private StateRepository repository;//NOPMD
 
     @Override
-    public Page<State> getAllPaginated(Pageable pageable, String value) {
+    public Page<State> getAllPaginated(final Pageable pageable, final String value) {
         if (Objects.isNull(value)) {
-            return repository.findAll(pageable);
+            return repository.findAll(pageable);//NOPMD
         } else {
             return repository.findByNameContains(pageable, value);
         }
     }
 
     @Override
-    public State get(Long id) {
-        Optional<State> state = repository.findById(id);
+    public State get(Long id) {//NOPMD
+        final Optional<State> state = repository.findById(id);
         super.verityNotFoundException(state);
-        return state.get();
+        return state.get();//NOPMD
     }
 
     @Override
-    public State getByName(String name) {
+    public State getByName(final String name) {
         return repository.findByName(name);
     }
 
     @Override
-    public State addOrUpdate(State entity) {
+    public State addOrUpdate(final State entity) {
         return this.repository.save(entity);
     }
 
     @Override
-    public void remove(State entity) {
+    public void remove(final State entity) {
         repository.delete(entity);
     }
 
     @Override
-    public void removeById(Long id) {
+    public void removeById(Long id) {//NOPMD
         repository.deleteById(id);
     }
 
@@ -60,7 +60,7 @@ public class StateServiceImpl extends BaseException implements StateService {
     }
 
     @Override
-    public Page<State> getAllPaginated(Pageable pageable){
+    public Page<State> getAllPaginated(final Pageable pageable){
         return null;
     }
 

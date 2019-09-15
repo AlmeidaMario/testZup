@@ -6,9 +6,9 @@ import org.springframework.data.web.config.EnableSpringDataWebSupport;
 
 @SpringBootApplication
 @EnableSpringDataWebSupport
-public class ZupTestApplication {
+public class ZupTestApplication {//NOPMD
 
-	public static void main(final String[] args) {
+	public static void main(final String[] args) {//NOPMD
 		SpringApplication.run(ZupTestApplication.class, args);
 	}
 

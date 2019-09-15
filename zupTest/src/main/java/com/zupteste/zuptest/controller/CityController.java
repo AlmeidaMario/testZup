@@ -14,29 +14,29 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
-@Api(value = "City Controller")
+@Api(value = "City Controller")//NOPMD
 @RestController
-@RequestMapping(value = "/city")
-public class CityController {
+@RequestMapping(value = "/city")//NOPMD
+public class CityController {//NOPMD
 
     @Autowired
-    CityService service;
+    private CityService service;//NOPMD
 
-    @GetMapping(value = "/{id}")
-    @ApiOperation(value = "Find City by id")
-    public CityDTO findById(final @ApiParam(value = "id", required = true) @PathVariable Long id){
+    @GetMapping(value = "/{id}")//NOPMD
+    @ApiOperation(value = "Find City by id")//NOPMD
+    public CityDTO findById(final @ApiParam(value = "id", required = true) @PathVariable Long id){//NOPMD
         return CityMapper.convertToDTO(service.get(id));
     }
 
     @GetMapping
-    @ApiOperation(value = "Find All City with pageable")
-    public Page<City> getAllCityPage(final Pageable pageable, final @RequestParam(value = "name",required = false)  String name){
+    @ApiOperation(value = "Find All City with pageable")//NOPMD
+    public Page<City> getAllCityPage(final Pageable pageable, final @RequestParam(value = "name",required = false)  String name){//NOPMD
         return service.getAllPaginated(pageable, name);
     }
 
     @PostMapping()
     @ApiOperation("new City ")
-    public CityDTO create(@ApiParam(value = "City", required = true)
+    public CityDTO create(@ApiParam(value = "City", required = true)//NOPMD
                            @RequestBody @Valid final CityDTO dto){
         final City city = CityMapper.convertToEntity(dto);
         return CityMapper.convertToDTO(service.addOrUpdate(city));
@@ -44,7 +44,7 @@ public class CityController {
 
     @PutMapping("/{id}")
     @ApiOperation("update City")
-    public CityDTO update(@ApiParam(value = "Client", required = true)
+    public CityDTO update(@ApiParam(value = "Client", required = true)//NOPMD
                            @RequestBody @Valid final CityDTO dto){
         final City city = CityMapper.convertToEntity(dto);
         return CityMapper.convertToDTO(service.addOrUpdate(city));
@@ -52,7 +52,7 @@ public class CityController {
 
     @DeleteMapping("/{id}")
     @ApiOperation("delete City")
-    public void delete(@ApiParam(value = "id", required = true) @PathVariable final Long id){
+    public void delete(@ApiParam(value = "id", required = true) @PathVariable final Long id){//NOPMD
         service.removeById(id);
     }
 

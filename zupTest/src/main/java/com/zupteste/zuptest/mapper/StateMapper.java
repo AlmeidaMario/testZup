@@ -7,11 +7,11 @@ import com.zupteste.zuptest.dto.StateDTO;
 import java.util.ArrayList;
 import java.util.List;
 
-public class StateMapper {
+public class StateMapper {//NOPMD
 
-    public static List<StateDTO> convertToListDTO(List<State> states){
+    public static List<StateDTO> convertToListDTO(final List<State> states){//NOPMD
 
-        List<StateDTO> stateDTOS = new ArrayList<>();
+        final List<StateDTO> stateDTOS = new ArrayList<>();
 
         states.forEach(state -> {
             stateDTOS.add(convertToDTO(state));
@@ -20,9 +20,9 @@ public class StateMapper {
         return stateDTOS;
     }
 
-    public static List<State> convertToListEntity(List<StateDTO> stateDTOS){
+    public static List<State> convertToListEntity(final List<StateDTO> stateDTOS){//NOPMD
 
-        List<State> states = new ArrayList<>();
+        final List<State> states = new ArrayList<>();
 
         stateDTOS.forEach(stateDTO -> {
             states.add(convertToEntity(stateDTO));
@@ -31,9 +31,9 @@ public class StateMapper {
         return states;
     }
 
-    public static StateDTO convertToDTO(State state){
+    public static StateDTO convertToDTO(final State state){//NOPMD
 
-        StateDTO dto = new StateDTO();
+        final StateDTO dto = new StateDTO();
 
         dto.setId(state.getId());
         dto.setName(state.getName());
@@ -41,8 +41,8 @@ public class StateMapper {
         return dto;
     }
 
-    public static State convertToEntity(StateDTO stateDTO){
-        State state = new State();
+    public static State convertToEntity(final StateDTO stateDTO){//NOPMD
+        final State state = new State();
 
         state.setId(stateDTO.getId());
         state.setName(stateDTO.getName());

@@ -7,8 +7,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface CityRepository extends JpaRepository<City, Long> {
-    Page<City> findByNameContains(Pageable pageable, String value);
+public interface CityRepository extends JpaRepository<City, Long> {//NOPMD
+    Page<City> findByNameContains(Pageable pageable, String value);//NOPMD
 
-    City findByName(String name);
+    City findByName(String name);//NOPMD
 }

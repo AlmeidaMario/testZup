@@ -4,9 +4,9 @@ import com.zupteste.zuptest.exception.NotFoundException;
 
 import java.util.Optional;
 
-class BaseException {
+class BaseException {//NOPMD
 
-     void verityNotFoundException(Optional<?> optional) throws NotFoundException {
+     public void verityNotFoundException(final Optional<?> optional) throws NotFoundException {//NOPMD
         if(!optional.isPresent()){
             throw new NotFoundException("Error Not Found");
         }

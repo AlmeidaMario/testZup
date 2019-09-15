@@ -6,11 +6,11 @@ import com.zupteste.zuptest.dto.CityDTO;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CityMapper {
+public class CityMapper {//NOPMD
 
-    public static List<CityDTO> convertToListDTO(List<City> cities){
+    public static List<CityDTO> convertToListDTO(final List<City> cities){//NOPMD
 
-        List<CityDTO> cityDTOS = new ArrayList<>();
+        final List<CityDTO> cityDTOS = new ArrayList<>();
 
         cities.forEach(city -> {
             cityDTOS.add(convertToDTO(city));
@@ -19,9 +19,9 @@ public class CityMapper {
         return cityDTOS;
     }
 
-    public static List<City> convertToListEntity(List<CityDTO> cityDTOS){
+    public static List<City> convertToListEntity(final List<CityDTO> cityDTOS){//NOPMD
 
-        List<City> cities = new ArrayList<>();
+        final List<City> cities = new ArrayList<>();
 
         cityDTOS.forEach(cityDTO -> {
             cities.add(convertToEntity(cityDTO));
@@ -30,9 +30,9 @@ public class CityMapper {
         return cities;
     }
 
-    public static CityDTO convertToDTO(City city){
+    public static CityDTO convertToDTO(final City city){//NOPMD
 
-        CityDTO dto = new CityDTO();
+        final CityDTO dto = new CityDTO();
 
         dto.setId(city.getId());
         dto.setName(city.getName());
@@ -44,14 +44,14 @@ public class CityMapper {
         return dto;
     }
 
-    public static City convertToEntity(CityDTO cityDTO){
-        City city = new City();
+    public static City convertToEntity(final CityDTO cityDTO){//NOPMD
+        final City city = new City();
 
         city.setId(cityDTO.getId());
         city.setName(cityDTO.getName());
 
         if(cityDTO.getState() != null){
-            city.setState(new State(cityDTO.getState().getId()));
+            city.setState(new State(cityDTO.getState().getId()));//NOPMD
         }
 
         return city;

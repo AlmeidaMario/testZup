@@ -10,38 +10,38 @@ import javax.persistence.*;
 @NoArgsConstructor
 @Entity
 @Table(name = "TB_ADDRESS")
-public class Address {
+public class Address {//NOPMD
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "cd_id_address", unique = true, nullable = false)
-    private Long id;
+    private Long id;//NOPMD
 
     @JoinColumn(name = "cd_id_client")
     @ManyToOne(optional = false, fetch = FetchType.EAGER)
-    private Client client;
+    private Client client;//NOPMD
 
     @Column(name = "nr_zip_code", nullable = false)
-    private Integer zipcode;
+    private Integer zipcode;//NOPMD
 
     @Column(name = "nr_number", nullable = false)
-    private Integer number;
+    private Integer number;//NOPMD
 
     @Column(name = "tx_street", nullable = false)
-    private String street;
+    private String street;//NOPMD
 
     @Column(name = "tx_district", nullable = false)
-    private String district;
+    private String district;//NOPMD
 
     @JoinColumn(name = "cd_id_city")
     @ManyToOne(optional = false, fetch = FetchType.EAGER)
-    private City city;
+    private City city;//NOPMD
 
-    public Address(Long id){
+    public Address(Long id){//NOPMD
         this.id = id;
     }
 
-    public Address(Long id, Integer number, String street, String district){
+    public Address(Long id, Integer number, String street, String district){//NOPMD
         this.id = id;
         this.number = number;
         this.street = street;

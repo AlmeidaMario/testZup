@@ -6,17 +6,17 @@ import lombok.*;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class AddressDTO {
+public class AddressDTO {//NOPMD
 
-    private Long id;
-    private ClientDTO client;
-    private Integer zipcode;
-    private Integer number;
-    private String street;
-    private String district;
-    private CityDTO city;
+    private Long id;//NOPMD
+    private ClientDTO client;//NOPMD
+    private Integer zipcode;//NOPMD
+    private Integer number;//NOPMD
+    private String street;//NOPMD
+    private String district;//NOPMD
+    private CityDTO city;//NOPMD
 
-    public AddressDTO(Long id, Integer number, String street, String district){
+    public AddressDTO(Long id, Integer number, String street, String district){//NOPMD
         this.id = id;
         this.number = number;
         this.street = street;

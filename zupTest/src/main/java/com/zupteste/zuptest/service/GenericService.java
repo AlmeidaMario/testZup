@@ -4,20 +4,20 @@ import org.springframework.data.domain.Pageable;
 
 import java.util.List;
 
-public interface GenericService<T,I> {
+public interface GenericService<T,I> {//NOPMD
 
-    List<T> getAll();
+    List<T> getAll();//NOPMD
 
-    Page<T> getAllPaginated(Pageable pageable);
+    Page<T> getAllPaginated(Pageable pageable);//NOPMD
 
-    Page<T> getAllPaginated(Pageable pageable, String value);
+    Page<T> getAllPaginated(Pageable pageable, String value);//NOPMD
 
-    T get(I id);
+    T get(I id);//NOPMD
 
-    T addOrUpdate(T entity);
+    T addOrUpdate(T entity);//NOPMD
 
-    void remove(T entity);
+    void remove(T entity);//NOPMD
 
-    void removeById(I id);
+    void removeById(I id);//NOPMD
 
 }

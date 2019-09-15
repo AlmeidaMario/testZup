@@ -5,11 +5,11 @@ import com.zupteste.zuptest.dto.ClientDTO;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ClientMapper {
+public class ClientMapper {//NOPMD
 
-    public static List<ClientDTO> convertToListDTO(List<Client> clients){
+    public static List<ClientDTO> convertToListDTO(final List<Client> clients){//NOPMD
 
-        List<ClientDTO> clientDTOS = new ArrayList<>();
+        final List<ClientDTO> clientDTOS = new ArrayList<>();
 
         clients.forEach(client -> {
             clientDTOS.add(convertToDTO(client));
@@ -18,9 +18,9 @@ public class ClientMapper {
         return clientDTOS;
     }
 
-    public static List<Client> convertToListEntity(List<ClientDTO> clientDTOS){
+    public static List<Client> convertToListEntity(final List<ClientDTO> clientDTOS){//NOPMD
 
-        List<Client> clients = new ArrayList<>();
+        final List<Client> clients = new ArrayList<>();
 
         clientDTOS.forEach(clientDTO -> {
             clients.add(convertToEntity(clientDTO));
@@ -29,9 +29,9 @@ public class ClientMapper {
         return clients;
     }
 
-    public static ClientDTO convertToDTO(Client client){
+    public static ClientDTO convertToDTO(final Client client){//NOPMD
 
-        ClientDTO dto = new ClientDTO();
+        final ClientDTO dto = new ClientDTO();
 
         dto.setId(client.getId());
         dto.setCpf(client.getCpf());
@@ -41,8 +41,8 @@ public class ClientMapper {
         return dto;
     }
 
-    public static Client convertToEntity(ClientDTO clientDTO){
-        Client client = new Client();
+    public static Client convertToEntity(final ClientDTO clientDTO){//NOPMD
+        final Client client = new Client();
 
         client.setId(clientDTO.getId());
         client.setCpf(clientDTO.getCpf());

@@ -9,16 +9,16 @@ import javax.validation.constraints.NotBlank;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class CityDTO {
+public class CityDTO {//NOPMD
 
-    private Long id;
+    private Long id;//NOPMD
 
-    private StateDTO state;
+    private StateDTO state;//NOPMD
 
     @NotBlank(message = "Name is Required")
-    private String name;
+    private String name;//NOPMD
 
-    public CityDTO(Long id, String name) {
+    public CityDTO(Long id, String name) {//NOPMD
         this.id = id;
         this.name = name;
     }

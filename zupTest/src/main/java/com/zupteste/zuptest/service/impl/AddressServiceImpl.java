@@ -13,54 +13,54 @@ import java.util.Objects;
 import java.util.Optional;
 
 @Service
-public class AddressServiceImpl extends BaseException implements AddressService {
+public class AddressServiceImpl extends BaseException implements AddressService {//NOPMD
 
     @Autowired
-    AddressRepository repository;
+    private AddressRepository repository;//NOPMD
 
     @Override
-    public Page<Address> getAllPaginated(Pageable pageable) {
+    public Page<Address> getAllPaginated(final Pageable pageable) {
         return repository.findAll(pageable);
     }
 
     @Override
-    public Page<Address> getAllPaginatedAdress(Pageable pageable, String cityName, String district) {
-        /*Nesse caso será dado a opção para pesquisa tanto por Cidade e Bairro, quanto por cada um....*/
+    public Page<Address> getAllPaginatedAdress(final Pageable pageable, final String cityName, final String district) {
+        /*Nesse caso será dado a opção para pesquisa tanto por Cidade e Bairro, quanto por cada um....*///NOPMD
         if (Objects.nonNull(cityName) && Objects.nonNull(district)) {
-            return repository.findAllByCity_NameAndDistrict(pageable, cityName, district);
+            return repository.findAllByCity_NameAndDistrict(pageable, cityName, district);//NOPMD
         } else if (Objects.nonNull(cityName)) {
-            return repository.findAllByCity_Name(pageable, cityName);
+            return repository.findAllByCity_Name(pageable, cityName);//NOPMD
         } else if (Objects.nonNull(district)) {
-            return repository.findAllByDistrictContains(pageable, district);
+            return repository.findAllByDistrictContains(pageable, district);//NOPMD
         } else {
             return repository.findAll(pageable);
         }
     }
 
     @Override
-    public Address getByDistrict(String district) {
+    public Address getByDistrict(final String district) {
         return repository.findByDistrict(district);
     }
 
     @Override
-    public Address get(Long id) {
-        Optional<Address> address = repository.findById(id);
+    public Address get(Long id) {//NOPMD
+        final Optional<Address> address = repository.findById(id);
         super.verityNotFoundException(address);
-        return address.get();
+        return address.get();//NOPMD
     }
 
     @Override
-    public Address addOrUpdate(Address entity){
+    public Address addOrUpdate(final Address entity){
         return this.repository.save(entity);
     }
 
     @Override
-    public void remove(Address entity) {
+    public void remove(final Address entity) {
         repository.delete(entity);
     }
 
     @Override
-    public void removeById(Long id) {
+    public void removeById(Long id) {//NOPMD
         repository.deleteById(id);
     }
 
@@ -70,7 +70,7 @@ public class AddressServiceImpl extends BaseException implements AddressService 
     }
 
     @Override
-    public Page<Address> getAllPaginated(Pageable pageable, String value){
+    public Page<Address> getAllPaginated(final Pageable pageable, final String value){
         return null;
     }
 
