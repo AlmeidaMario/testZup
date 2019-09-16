@@ -1,21 +1,25 @@
 package com.zupteste.zuptest.service.impl;
 
+import com.zupteste.zuptest.ZupTestApplication;
 import com.zupteste.zuptest.domain.Address;
+import com.zupteste.zuptest.domain.City;
+import com.zupteste.zuptest.domain.Client;
 import com.zupteste.zuptest.repository.AddressRepository;
 import com.zupteste.zuptest.service.AddressService;
-import org.junit.Before;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.runner.RunWith;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.context.annotation.Bean;
-import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.test.context.ContextConfiguration;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
-@RunWith(SpringRunner.class)
+@SpringBootTest
+@ContextConfiguration(classes = ZupTestApplication.class)
 public class AddressServiceImplIntegrationTest {
 
     @TestConfiguration
@@ -33,9 +37,13 @@ public class AddressServiceImplIntegrationTest {
     @MockBean
     private AddressRepository addressRepository;
 
-    @Before
+    @BeforeEach
     public void setUp() {
-        Address address = new Address((long)1,8,"Tasso da Silveira","Cidade Deus");
+
+        Client client = new Client((long)1,"01096709228","Mario Ferreira de Almeida Neto");
+        City city = new City((long) 1, "Manaus");
+
+        Address address = new Address((long) 1, client,69099137,8,"Tasso da Silveira","Cidade Deus",city);
 
         Mockito.when(addressRepository.findByDistrict(address.getDistrict()))
                 .thenReturn(address);

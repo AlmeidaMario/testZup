@@ -69,4 +69,9 @@ public class ClientServiceImpl extends BaseException implements ClientService {/
         return repository.findByCpf(cpf);
     }
 
+    @Override
+    public Client getByName(String name) {
+        return repository.findByNameContains(name);
+    }
+
 }

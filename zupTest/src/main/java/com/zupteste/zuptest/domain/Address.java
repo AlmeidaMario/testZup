@@ -41,11 +41,4 @@ public class Address {//NOPMD
         this.id = id;
     }
 
-    public Address(Long id, Integer number, String street, String district){//NOPMD
-        this.id = id;
-        this.number = number;
-        this.street = street;
-        this.district = district;
-    }
-
 }

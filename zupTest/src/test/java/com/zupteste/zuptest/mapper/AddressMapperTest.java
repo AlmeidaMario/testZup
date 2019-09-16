@@ -1,6 +1,8 @@
 package com.zupteste.zuptest.mapper;
 
 import com.zupteste.zuptest.domain.Address;
+import com.zupteste.zuptest.domain.City;
+import com.zupteste.zuptest.domain.Client;
 import com.zupteste.zuptest.dto.AddressDTO;
 import org.junit.jupiter.api.Test;
 
@@ -20,7 +22,10 @@ public class AddressMapperTest {
 
     @Test
     void convertEntityToDto() {
-        Address entity = new Address((long) 1, 8,"Tasso da Silveira","Cidade Deus");
+        Client client = new Client((long)1,"01096709228","Mario Ferreira de Almeida Neto");
+        City city = new City((long) 1, "Manaus");
+
+        Address entity = new Address((long) 1, client,69099137,8,"Tasso da Silveira","Cidade Deus",city);
         AddressDTO dto = AddressMapper.convertToDTO(entity);
         checkProperties(dto, entity);
     }
@@ -28,6 +33,7 @@ public class AddressMapperTest {
 
     @Test
     void convertListToEntityList() {
+
         AddressDTO dto1 = new AddressDTO((long) 1, 8,"Tasso da Silveira","Cidade Deus");
         AddressDTO dto2 = new AddressDTO((long) 2, 527,"Anhandui","Flores");
         List<AddressDTO> listDTOS = Arrays.asList(dto1, dto2);
@@ -41,8 +47,12 @@ public class AddressMapperTest {
 
     @Test
     void convertListToDtoList() {
-        Address entity1 = new Address((long) 1, 8,"Tasso da Silveira","Cidade Deus");
-        Address entity2 = new Address((long) 2, 527,"Anhandui","Flores");
+        Client client = new Client((long)1,"01096709228","Mario Ferreira de Almeida Neto");
+        City city = new City((long) 1, "Manaus");
+
+        Address entity1 = new Address((long) 1, client,69099137,8,"Tasso da Silveira","Cidade Deus",city);
+        Address entity2 = new Address((long) 1, client,69099137,8,"Anhandui","Flores",city);
+
         List<Address> entities = Arrays.asList(entity1, entity2);
         final List<AddressDTO> listDTOS = AddressMapper.convertToListDTO(entities);
 

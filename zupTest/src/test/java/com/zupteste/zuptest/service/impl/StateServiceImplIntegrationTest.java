@@ -1,21 +1,23 @@
 package com.zupteste.zuptest.service.impl;
 
+import com.zupteste.zuptest.ZupTestApplication;
 import com.zupteste.zuptest.domain.State;
 import com.zupteste.zuptest.repository.StateRepository;
 import com.zupteste.zuptest.service.StateService;
 import org.junit.Before;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.runner.RunWith;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.context.annotation.Bean;
-import org.springframework.test.context.junit4.SpringRunner;
-
+import org.springframework.test.context.ContextConfiguration;
 import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
 
-@RunWith(SpringRunner.class)
+@SpringBootTest
+@ContextConfiguration(classes = ZupTestApplication.class)
 public class StateServiceImplIntegrationTest {
 
     @TestConfiguration
@@ -32,7 +34,7 @@ public class StateServiceImplIntegrationTest {
     @MockBean
     StateRepository stateRepository;
 
-    @Before
+    @BeforeEach
     public void setUp() {
         State state = new State((long)1,"Amazonas");
 
@@ -47,6 +49,5 @@ public class StateServiceImplIntegrationTest {
 
         assertThat(found.getName()).isEqualTo(name);
     }
-
 
 }
