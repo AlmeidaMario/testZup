@@ -9,4 +9,7 @@ public interface  ClientService extends GenericService<Client, Long> {//NOPMD
      List<Client> findByName(String value);//NOPMD
 
      Client getByCPF(String cpf);//NOPMD
+
+     Client getByName(String name);//NOPMD
+
 }

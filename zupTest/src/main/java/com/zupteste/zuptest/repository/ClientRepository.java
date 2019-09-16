@@ -11,5 +11,6 @@ import org.springframework.stereotype.Repository;
 public interface ClientRepository extends JpaRepository<Client, Long> {//NOPMD
 
     Client findByCpf(String cpf);//NOPMD
+    Client findByNameContains(String name);//NOPMD
     Page<Client> findByNameContains(Pageable pageable, String value);//NOPMD
 }
